@@ -1,7 +1,9 @@
 #data wrangling for final project 
 #drawing in data
-library("dplyr")
 install.packages("tidyverse")
+install.packages("tidyr")
+library("dplyr")
+library("tidyr")
 vaccination_df <- read.csv("~/infoDataSet1.csv")
 mortality_df <- read.csv("~/InfoDataSet2.csv")
 
@@ -18,6 +20,7 @@ vaccine_mortality_df <- merged_df %>%
   group_by(Country) %>% 
   summarise(Postneonatal = mean(Postneonatal), DTP3 = mean(DTP3))
 
+
 #new categorical variable 
 # https://www.aafp.org/news/health-of-the-public/kindergarten-vaccine-rates-2023-report.html#:~:text=National%20vaccination%20coverage%20rates%20for,in%20the%20previous%20school%20year.
 # source for finding that 93.1% is good national vaccination coverage rates
@@ -30,6 +33,8 @@ vaccine_mortality_df <- vaccine_mortality_df %>%
 vaccine_mortality_df <- vaccine_mortality_df %>%
   mutate(died_per_shot_not_taken = round((round(Postneonatal)/(100-round(DTP3)))))
 
+
 #summarization data frame
 # average DTP shot rate for the world overall
 countries_avg_DTP_rate <- summarize(vaccine_mortality_df, DTP_rate = mean(DTP3))
+
