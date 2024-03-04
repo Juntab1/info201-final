@@ -38,7 +38,9 @@ viz_2_sidebar <- sidebarPanel(
     "county_postneo_DTP",
     "Choose Country",
     vacc_df$Country,
-  )
+  ),
+  p("This is where we would write text
+    about our postneonatal and DTP rates")
   
 )
 
