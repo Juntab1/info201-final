@@ -1,0 +1,92 @@
+library(ggplot2)
+library(plotly)
+library(dplyr)
+
+vacc_df <- read.csv("vaccination_mortality_df.csv")
+
+## OVERVIEW TAB INFO
+
+overview_tab <- tabPanel("Final Project",
+   h1("Child Mortality and DTP3 Vaccination Rate"),
+   p("some explanation")
+)
+
+## VIZ 1 TAB INFO
+
+viz_1_sidebar <- sidebarPanel(
+  h2("Options for graph"),
+  #TODO: Put inputs for modifying graph here
+)
+
+viz_1_main_panel <- mainPanel(
+  h2("Child Mortality Rate per Countries"),
+  plotlyOutput(outputId = "your_viz_1_output_id")
+)
+
+viz_1_tab <- tabPanel("Viz 1 tab title",
+  sidebarLayout(
+    viz_1_sidebar,
+    viz_1_main_panel
+  )
+)
+
+## VIZ 2 TAB INFO
+
+viz_2_sidebar <- sidebarPanel(
+  h2("Options for graph"),
+  selectInput(
+    "county_postneo_DTP",
+    "Choose Country",
+    vacc_df$Country,
+  )
+  
+)
+
+viz_2_main_panel <- mainPanel(
+  h2("Postneonatal and DTP3 Rate for a Country"),
+  plotlyOutput(outputId = "country_postneonatal_rate"),
+  plotlyOutput(outputId = "country_dtp_rate")
+)
+
+viz_2_tab <- tabPanel("Postneonatal and DTP3 rates",
+  sidebarLayout(
+    viz_2_sidebar,
+    viz_2_main_panel
+  )
+)
+
+## VIZ 3 TAB INFO
+
+viz_3_sidebar <- sidebarPanel(
+  h2("Options for graph"),
+  #TODO: Put inputs for modifying graph here
+)
+
+viz_3_main_panel <- mainPanel(
+  h2("Vizualization 3 Title"),
+  # plotlyOutput(outputId = "your_viz_1_output_id")
+)
+
+viz_3_tab <- tabPanel("Viz 3 tab title",
+  sidebarLayout(
+    viz_3_sidebar,
+    viz_3_main_panel
+  )
+)
+
+## CONCLUSIONS TAB INFO
+
+conclusion_tab <- tabPanel("Conclusion Tab Title",
+ h1("Some title"),
+ p("some conclusions")
+)
+
+
+
+ui <- navbarPage("Example Project Title",
+  overview_tab,
+  viz_1_tab,
+  viz_2_tab,
+  viz_3_tab,
+  conclusion_tab
+)
