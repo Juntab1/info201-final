@@ -13,7 +13,7 @@ overview_tab <- tabPanel("Introduction",
      globally still lack access to essential immunizations. Our project seeks to shed light on this issue by analyzing 
      two key datasets: one focused on child mortality rates and the other on vaccination coverage, specifically the 
      Diphtheria, Tetanus, and Pertussis (DTP3) vaccine."),
-   tags$img(src = "intro_image_1.jpeg"),
+   tags$img(src = "https://www.christushealth.org/-/media/christus-health/connect-with-christus/images/blog/childvaccinationsmarketingpromo592x416copy.jpg", width = "400px", length = "400px"),
    h2("Major Questions:"),
    tags$ol(
      tags$li("How have vaccination rates changed over time?"),
@@ -25,15 +25,14 @@ overview_tab <- tabPanel("Introduction",
    tags$ol(tags$b("Mortality Data:") ,"Provided by the Institute for Health Metrics and Evaluation (IHME), 
            this dataset spans from 1990 to 2011 and includes estimates of child mortality rates, number 
            of child deaths, and annualized rate of decline in child mortality. We'll focus on postneonatal 
-           mortality rates.",  tags$a(href = "https://ghdx.healthdata.org/record/ihme-data/child-mortality-estimates-and-mdg-4-attainment-country-1990-2011", target = "blank_", "IHME Child Mortality Data")),
+           mortality rates.",  tags$a(href = "https://ghdx.healthdata.org/record/ihme-data/child-mortality-estimates-and-mdg-4-attainment-country-1990-2011", "IHME Child Mortality Data")),
    tags$ol(tags$b("Vaccination Coverage Data:") ,"Sourced from Our World in Data, this dataset covers the period from 1980 to 2021 and includes coverage 
            of the DTP3 vaccine among one-year-olds. It is based on data from the World Health Organization (WHO) and UNICEF.",  
-           tags$a(href = "https://ourworldindata.org/vaccination", target = "blank_", "OWID Vaccination Coverage Data")),
+           tags$a(href = "https://ourworldindata.org/vaccination", "OWID Vaccination Coverage Data")),
    h2("Ethical Considerations:"),
    tags$ol(tags$b("Data Privacy:"), "Ensuring the anonymity and privacy of individuals represented in the datasets."),
    tags$ol(tags$b("Equity:"), "Recognizing disparities in access to healthcare and vaccination services among different populations."),
    tags$ol(tags$b("Transparency:"), "Providing clear and accurate information about the sources and methodologies used in data collection and analysis."),
-   tags$img(src = "intro_image_1.jpeg"),
    p("Through our analysis, we aim to advocate for increased vaccination efforts and raise awareness about the importance of immunizations 
      n improving global health outcomes. Join us on this journey to understand and address the challenges of child mortality and 
      vaccination coverage worldwide.")
@@ -50,8 +49,8 @@ viz_1_sidebar <- sidebarPanel(
     selecting the “True” button, the red colored countries on 
     the map signify that that country is above the average 
     DTP3 vaccination rate (around 93.1%), compared to when you 
-    press the “False” button, those countries that remain 
-    gray/white colored do not have a vaccination rate above 
+    press the “False” button, countries highlighted in red
+    do not have a vaccination rate above 
     the average value. This page aims to contribute to the 
     monitoring and evaluation of immunization programs worldwide, 
     with the ultimate goal of achieving high and equitable vaccine 
@@ -60,7 +59,8 @@ viz_1_sidebar <- sidebarPanel(
 
 viz_1_main_panel <- mainPanel(
   h2("Above or Below 93.1% DTP3 Vaccination Coverage"),
-  plotlyOutput(outputId = "dtp_vaccination")
+  plotlyOutput(outputId = "dtp_vaccination"),
+  tags$img(src = "https://ourworldindata.org/grapher/thumbnail/share-of-children-immunized-dtp3.png?imType=og", width = "600px", length = "600px")
 )
 
 viz_1_tab <- tabPanel("Above or Below DTP3 Vaccination Rate",
@@ -112,7 +112,7 @@ viz_3_sidebar <- sidebarPanel(
                choices = c(0, 1, 2, 3, 4, 5)),
   p("Our last interactive page includes a world map diagram 
     of several countries, as well as a selecting button feature 
-    using the numbers 0-6. The numbers 0-6 represent the number of 
+    using the numbers 0-5. The numbers 0-5 represent the number of 
     individuals (per 100) who died per shot not taken. This 
     can connect to other portions of our data including the postneonatal 
     death rate as the number of deaths generally increase as the number 
@@ -137,7 +137,6 @@ viz_3_tab <- tabPanel("Death per a Hundred People in Population",
 
 conclusion_tab <- tabPanel("Conclusion",
  h1("Conclusion: Key Takeaways"),
- tags$img(src = "conclusion_image_1"),
  p("After analyzing the relationship between child 
    mortality rates and vaccination coverage, several 
    key insights emerge that underscore the importance 
@@ -157,6 +156,7 @@ conclusion_tab <- tabPanel("Conclusion",
    access to getting the DTP3 vaccination and which ones do not. By highlighting 
    the countries that are above average, one can think about different factors 
    that influence an individual's access to healthcare. "),
+ tags$img(src = "https://assets.ourworldindata.org/grapher/exports/child-deaths-by-source.svg", width = "500px", length = "500px"),
  h2("2. Correlation Between Vaccination Coverage and Child Mortality:"),
  p("We found a strong correlation between higher vaccination coverage rates 
    and lower postneonatal mortality rates. Regions with higher DTP3 coverage 
@@ -172,7 +172,7 @@ conclusion_tab <- tabPanel("Conclusion",
  h2("3. Regional Disparities and Targeted Interventions:"),
  p("Despite overall progress, our analysis also reveals significant disparities 
    in vaccination coverage and child mortality rates across regions. Certain areas, 
-   particularly in low- and middle-income countries, continue to face challenges in 
+   particularly in low and middle income countries, continue to face challenges in 
    accessing and delivering vaccines effectively. These findings underscore the 
    importance of targeted interventions and investment in health infrastructure 
    to address regional disparities and ensure equitable access to vaccines for 
@@ -181,7 +181,6 @@ conclusion_tab <- tabPanel("Conclusion",
    DTP3 vaccination rate (specifically for children ages 1-3). This visual depicts 
    which countries are able to have access to healthcare and which countries 
    can access a high amount of DTP3 vaccine coverage."),
- tags$img(src = "conclusion_image_2"),
  p("In conclusion, our analysis highlights the critical role of vaccinations in 
    reducing child mortality and improving global health outcomes. By prioritizing 
    vaccination efforts, addressing regional disparities, and investing in health 
